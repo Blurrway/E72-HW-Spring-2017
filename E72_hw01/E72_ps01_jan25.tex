@@ -1,0 +1,150 @@
+\documentclass[12pt,letterpaper]{hmcpset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+% info for header block in upper right hand corner
+\name{}
+\class{Engineering 72, Section \hspace{1ex}}
+\assignment{Homework 1}
+\duedate{27 January 2017}
+
+\newcommand{\pn}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\bk}[1]{\left[ #1 \right]}
+\newcommand{\vc}[1]{\left\langle #1 \right\rangle}
+\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}
+
+\newcommand{\norm}[1]{\lvert #1 \rvert}
+
+% set numbering style for enumerated lists to be of form (a), (b), (c), etc.
+\renewcommand{\labelenumi}{{(\alph{enumi})}}
+
+% command to make 2in wide image centered on page
+\newcommand{\diagram}[2]{\begin{center}\includegraphics[width=#2in, keepaspectratio]{#1}\end{center}}
+
+\begin{document}
+	
+\problemlist{1, 2, 3, 4, 5}
+
+\begin{problem}[1]
+	 The deflection $\delta$ of the tip of a cantilever beam depends on the applied force $P$, the beam
+	 length $L$, the elastic modulus (a material property that characterizes stiffness and has
+	 dimensions force/length$^2$) $E$, and a property of the cross section called the second moment of
+	 area, which is represented with the symbol $I$ and has dimensions of length$^4$. Experience with
+	 analysis of beams would tell us that it is always the product of $E$ and $I$ that determines
+	 deflection, so we may work with the grouped quantity $EI$ from the outset.
+	 \begin{enumerate}
+	 	\item Choose force (and not mass) as one of the fundamental dimensions. Develop a set of	 dimensionless parameters for this problem. Choose parameters such that $\delta$ appears in only one of them.
+	 	
+	 	\item Show that if you were to have used mass as one of the fundamental dimensions you
+	 	would get the same number of dimensionless groups.
+	 	
+	 	\item The theoretical tip deflection is
+	 	$$ \delta = \frac{PL^3}{3EI}. $$
+	 	If you were to do a set of experiments by varying problem parameters and measuring
+	 	values for $\delta$ you could determine the functional relationship connecting your dimensionless parameters. Assuming that this relationship is a power law, sketch a plot that shows the regression line (indicating its intercept and slope) that you would expect if your data corresponded to the theoretical deflection.
+	 \end{enumerate} 
+	 \diagram{Beam}{2}
+\end{problem}
+
+\begin{solution}
+\vfill
+\end{solution}
+
+\newpage
+
+\begin{problem}[2] 
+	In 1945, the United States conducted the Trinity nuclear test in New Mexico as part of the	Manhattan Project. This photo was published in Life magazine. Much to the chagrin of the	US government, fluid dynamics professor Geoffrey Taylor used the photo below and other	unclassified ones like it (all had scale bars) and the Buckingham Pi theorem to estimate the	yield of the blast (in kilotons of TNT)---which was definitely classified information!
+	\begin{enumerate}
+		\item Determine a dimensionless parameter that relates the blast energy $E$, radius of the shock
+		wave $R$ at time $t$ and air density $\rho$.
+		
+		\item Taylor did experiments with smaller explosives and determined that the value of his
+		version of this parameter was approximately 1. That is convenient, because yours is 1
+		too, even if your parameter is his to some power. Here is some of the data from his
+		paper (which is in Resources on Sakai if you are interested). What is your estimate of
+		the blast energy in Joules? In kilotons of TNT? The true (then classified) answer is
+		about 21 kilotons. How good is your estimate?
+		\diagram{Explosion_1}{3}
+		
+		\item In general, if a physical problem is described by one dimensionless parameter, what can
+		we say about that parameter?
+	\end{enumerate}
+\end{problem}
+
+\begin{solution}
+	\vfill
+\end{solution}
+
+\newpage
+
+\begin{problem}[3]
+	A thermistor is a temperature-dependent resistor. This problem is about the kind of thermistor
+	that has a higher resistance as it gets hotter, so it can be used as a fuse. If the current
+	surges, the resulting Joule heating (due to Power $= I^2 R$) increases the resistance and so
+	cuts the current. This is nice because when the current surge goes away and the thermistor
+	cools down and normal operation can resume without the replacement of a fuse. This is how
+	hairdryers switch themselves off for awhile when they get too hot. Our goal is to understand
+	how characteristics of a thermistor and its operating conditions are related to its resistance.
+	\diagram{Thermistor}{2.5}
+	The resistance across a disk like a thermistor can be written as $\rho d/A$, where $\rho$ is the resistivity
+	of the material (this is what changes with temperature; typical units are $\Omega\cdot$m), $d$ is the
+	thickness of the disk and $A$ is the circular cross sectional area. Other material properties that
+	are significant are the heat transfer coefficient $h \left(\frac{W}{m^2 K}\right)$ and the thermal conductivity $k \left(\frac{W}{m K}\right)$.
+	The operating conditions are specified by $V$ , the voltage across the thermistor, and $\Delta T$, the
+	change in temperature from the reference temperature.
+	
+	\hspace{0.5 in} Develop a set of dimensionless parameters that relate $\rho, d, A, h, k, V$ and $\Delta T$. There is not a
+	unique choice of fundamental dimensions. Be sure you have an independent set.
+
+\end{problem}
+
+\begin{solution}
+	\vfill
+\end{solution}
+
+\newpage
+
+\begin{problem}[4]
+	In 2012, the Curiosity rover (mass $m$ = 900 kg) landed on Mars. It approached the planet
+	at 20000 km/hour. Atmospheric drag slowed it to about 1600 km/hour, then a parachute
+	opened, which slowed to 320 km/hr (90 m/s). Rockets then completed the deceleration so it
+	could make a gentle landing. How did NASA engineers design a parachute that they knew
+	would work on Mars? How could they predict the minimum diameter $d$ of the parachute that
+	they should use on Mars by doing tests on Earth?
+	\diagram{Rover}{2}
+	\begin{enumerate}
+		\item Relevant physical parameters include the acceleration due to gravity $g$ and the atmospheric
+		density $\rho$ (considered constant on each planet: $\rho_{\textnormal{Earth}} =$ 1.2 kg/m$^3$
+		, $\rho_{\textnormal{Mars}} = 0.02$ kg/m$^3$
+		).
+		The atmospheric viscosity is not important for this rough analysis because it is low on
+		both planets. Develop a set of dimensionless parameters for this problem. Remember
+		that this set of parameters is not unique, and so to answer the next parts of the question
+		you might want to consider a different set.
+		
+		\item Using a model rover on Earth, what set of experiments and analysis would you do to
+		solve the design problem of finding the correct minimum diameter? Explain clearly for
+		full credit.
+		
+		\item The parachute used for the rover on Mars actually had a diameter of 20 m. What
+		single test (one diameter parachute) on Earth with a 10 kg model rover could prove this
+		to be correct for a 90 m/s Mars terminal velocity? What velocity would be measured in
+		the Earth experiment?
+	\end{enumerate}
+\end{problem}
+
+\begin{solution}
+	\vfill
+\end{solution}
+
+\newpage
+
+\begin{problem}[5]
+	Find the 95\% confidence interval for the mean terminal velocity calculated during the first
+	class for the steel ball (with $d$ = 15.88 mm and $w$ = 0.1603 N) falling in oil (with $\rho =
+	920 $kg/m$^3$ and $\mu = 0.067$ Pa$\cdot$s). Find the 95\% prediction interval for the terminal velocity of
+	a ball dropped in one trial under the same conditions.
+\end{problem}
+\end{document}

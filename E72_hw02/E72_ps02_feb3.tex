@@ -1,0 +1,142 @@
+\documentclass[12pt,letterpaper]{hmcpset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{afterpage}
+% info for header block in upper right hand corner
+\name{}
+\class{Engineering 72}
+\assignment{Homework 2}
+\duedate{Due 3 February 2017}
+
+\newcommand{\pn}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\bk}[1]{\left[ #1 \right]}
+\newcommand{\vc}[1]{\left\langle #1 \right\rangle}
+\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}
+
+\newcommand{\norm}[1]{\lvert #1 \rvert}
+
+% set numbering style for enumerated lists to be of form (a), (b), (c), etc.
+\renewcommand{\labelenumi}{{(\alph{enumi})}}
+
+% command to make 2in wide image centered on page
+\newcommand{\diagram}[2]{\begin{center}\includegraphics[width=#2in, keepaspectratio]{#1}\end{center}}
+
+\begin{document}
+	
+\problemlist{1, 2, 3, 4}
+
+\textbf{Reminder}: Explain your solution process in complete sentences. You may lose points due to
+poor presentation. Review policy on collaboration in the class syllabus. If you use any outside
+resources be sure to cite your source.
+
+\begin{problem}[1]
+	 As shown in Figure.1, the signal $x(t)$ is approximated by the two building blocks, i.e. $x(t) \cong \widehat{x}(t) = a_1 \phi_1 (t) + a_2 \phi_2 (t)$.
+	 \begin{enumerate}
+	 	\item Determine the coefficients $a_1$ and $a_2$ such that integrated square error (ISE) is
+	 	minimized. Sketch the approximated signal $\widehat{x}(t)$. Label the relevant amplitudes and
+	 	times.
+	 	
+	 	\item Consider a circuit system that is linear and time-invariant. If the response to the input
+	 	waveform $\phi_1 (t)$ is $y_1 (t)$, and the response to the input waveform $\phi_2 (t)$ is $y_2 (t)$, what
+	 	is the response of the system to $\widehat{x}(t)$? Please explain your results.
+	 	
+	 	\item Sketch another non-trivial basis function $\phi_3 (t)$, defined in the region $0 \leq t \leq 1$, that is orthogonal to both $\phi_1 (t)$ and $\phi_2 (t)$. Label the relevant amplitudes and times. Let $x(t) \cong \widehat{x}(t) = a_1 \phi_1 (t) + a_2 \phi_2 (t) + a_3 \phi_3 (t)$, what are the new coefficients? Describe the advantage of using orthogonal basis functions.
+	 \end{enumerate} 
+	 \diagram{Figure_1}{4.75}
+\end{problem}
+
+\begin{solution}
+\vfill
+\end{solution}
+
+\afterpage{\null\newpage}
+
+\begin{problem}[2] 
+	A Hadamard matrix consists of elements $\pm$1 and has the property that its rows are
+	orthogonal to each other (recall that if two vectors are orthogonal their dot product is zero).
+	Starting with a 2x2 matrix $[H_2]$, a matrix of $[H_{2n}]$ of size 2nx2n can be constructed
+	recursively using the equation given below.
+	$$ [H_2]=\begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix}
+	   \hspace{0.5in}
+	   [H_{2n}]=\begin{bmatrix} [H_n] & [H_n] \\ [H_n] & -[H_n] \end{bmatrix} $$
+	\begin{enumerate}
+		\item Construct $[H_4]$ and $[H_8]$.
+		
+		\item If $c_{ik}$ denotes the elements in the i$^{th}$ row and k$^th$ column of $[H_4]$, sketch the following
+		waveforms:
+		$$ \phi_i (t) = \sum_{k=1}^4 c_{ik}p(t-(k-1)T),\hspace{2ex} i = 1,2,3,4$$
+		where $p(t)$ is a pulse of unit amplitude on the interval $0 \leq t < T$, and $T$ is an arbitrary time
+		interval. The waveforms $\phi_i (t)$ are known as \textbf{Walsh functions} and among other things are used to
+		separate channels in Code Division Multiple Access (CDMA) cell phones. When the codes used
+		in CDMA system are orthogonal to each other, interference from other users (codes) can be
+		minimized at the detection system when the user channels are properly synchronized.
+		
+		\item Are the $\phi_i (t)$ of part (b) orthogonal to each other? Why or why not? Discuss the
+		relationship of result to the orthogonal nature of the pair of the row vectors.
+		
+		\item Determine the coefficients $c_k$ that minimize the ISE in the series approximation of the
+		signal shown in Figure 2, i.e.
+		$$ x(t) \approx \widehat{x}(t) = \Sigma_{k=1}^4 c_k \phi_k (t) $$
+	\end{enumerate}
+	\diagram{Figure_2}{2.5}
+\end{problem}
+
+\begin{solution}
+	\vfill
+\end{solution}
+
+\afterpage{\null\newpage}
+
+\newpage
+
+\begin{problem}[3]
+	As discussed in class, Fourier Series can be used to represent a periodic signal because the
+	complex exponential building blocks are also periodic with the same $T_0$. In order to apply
+	the Fourier Series method to a non-periodic signal $x(t)$ over a given time interval, say $T$,
+	we can instead construct the periodic extension of the signal as $x_p (t)$, by choosing a $T_0$
+	that is something larger than $T$ (i.e. including all the interested time).
+	
+	Mathematically,
+	$$ x_p (t) = \sum_{n=-\infty}^{\infty} x(t-nT_0) $$
+	\begin{enumerate}
+		\item For the signal $x(t)$ shown in Figure 3,  determine the expression for the Fourier
+		coefficients of $x_p (t)$ if we choose $T_0 = T$. We assume the Fourier Series form is given
+		as $x(t) \cong \widehat{x}(t) = \Sigma_{k=-K}^K c_k \phi_k (t)$, where $\phi_k (t) = e^{jk\omega_0 t}$ , and $\omega_0 = \frac{2\pi}{T_0}$.
+		
+		\item Create a Matlab function to generate the graphs (include a couple periods at least) of
+		$\widehat{x}(t)$ for A=2, T=1, T$_0$=1 and K=10, 20 and 50. Estimate the ISE for each choice of
+		K and display the result on the graph.
+	\end{enumerate}
+	\diagram{Figure_3}{2.5}
+\end{problem}
+
+\begin{solution}
+	\vfill
+\end{solution}
+
+\afterpage{\null\newpage}
+\newpage
+
+\begin{problem}[4]
+	Let the pulse train $x(t)$ used in the class example pass through a RC circuit system below.
+	The voltage across the capacitor C be the output $y(t)$. Assume A=1 volt, $\tau$ =
+	0.25 msec, $T_0$ = 1 msec. R=0.5 k$\Omega$, C=$\frac{1}{2\pi}$ $\mu$F. \textbf{From E79}, you have learned that each
+	complex exponential component $c_k e^{jk\omega_0 t}$ of the pulse train after the LTI system is scaled
+	by $H(jk\omega_0)$ or its frequency response function at the corresponding exciting frequency of
+	$k\omega_0$.	
+	\begin{enumerate}
+		\item Use your Matlab code from the class to sketch the input $x(t)$ and output waveform
+		$y(t)$ for comparison. You should decide on a proper number of terms $K$ to use. 
+		
+		\item Explain your results and what the RC circuit does to the input signal.
+	\end{enumerate}
+	\diagram{Circuits_4}{4}
+\end{problem}
+
+\begin{solution}
+	\vfill
+\end{solution}
+
+\end{document}

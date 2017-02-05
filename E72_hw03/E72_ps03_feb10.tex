@@ -1,0 +1,155 @@
+\documentclass[12pt,letterpaper]{hmcpset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{afterpage}
+% info for header block in upper right hand corner
+\name{}
+\class{Engineering 72}
+\assignment{Homework 3}
+\duedate{Due 10 February 2017}
+
+\newcommand{\pn}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\bk}[1]{\left[ #1 \right]}
+\newcommand{\vc}[1]{\left\langle #1 \right\rangle}
+\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}
+
+\newcommand{\norm}[1]{\lvert #1 \rvert}
+
+% set numbering style for enumerated lists to be of form (a), (b), (c), etc.
+\renewcommand{\labelenumi}{{(\alph{enumi})}}
+
+% command to make 2in wide image centered on page
+\newcommand{\diagram}[2]{\begin{center}\includegraphics[width=#2in, keepaspectratio]{#1}\end{center}}
+
+
+\begin{document}
+	
+	\problemlist{1,2,3}
+	
+	\begin{problem}[1]
+		Kirchhoff’s current law (KCL) can be used to write \textit{algebraic} equations for RLC circuits
+		using the concept of impedance, which you learned in E59. If we think of impedance as a
+		complex-valued resistance, then
+		\begin{itemize}
+			\item for a resistor, impedance $Z_R = R$
+			
+			\item for an inductor, impedance $Z_L = j\omega L$
+			
+			\item for a capacitor, impedance $Z_C = 1/(j\omega C)$.
+		\end{itemize}
+		Use KCL to write a set of equations in the form $A\textbf{x} = \textbf{b}$, where \textbf{x} is the vector of (complex)
+		node voltages. Write a function to solve your system of equations using Matlab for an AC
+		input with amplitude $V_{in} = 5$ V and frequency $f$ (note that in your system of equations this
+		can be represented by the amplitude only). This circuit is a low-pass Butterworth filter with
+		a cutoff frequency of 12 MHz. To see the effect of frequency on the output voltage, make
+		a plot of log magnitude (dB) $= 20\log_{10}( \frac{V_{out}}{V_{in}} )$ (with $V_{out}$ as the magnitude of the complex
+		voltage across the load resistor) versus frequency from 1 to 100 MHz.
+		
+		\diagram{1_Circuit}{5}
+	\end{problem}
+	
+	\begin{solution}
+		\vfill
+	\end{solution}
+	
+	\begin{problem}[2]
+		A heat sink for cooling computer chips is fabricated from copper with machined microchannels
+		that carry a cooling fluid with temperature $T_f = 25^{\circ}$C. Assume that this is also the
+		temperature of the walls of the channel (that is, convective heat transfer from the wall to the
+		fluid is very effective). The lower edge of the heat sink is in contact with a thermal insulator
+		that does not remove any heat. The figure shows a cross section of the heat sink, with the
+		channels running into the page. Our goal is to compute the temperature distribution for the
+		maximum allowable chip temperature of $T_c = 75^{\circ}$C and the flux of waste heat that can be
+		removed.
+		\diagram{Heat_sink}{4}
+		\begin{enumerate}
+			\item Instead of trying to compute the temperature distribution everywhere, we overlay a
+			grid on the cross-section and determine the temperatures at a discrete set of points.
+			Because of the symmetry in the problem, it is enough to compute the temperatures in the
+			region covered by the points shown. The temperatures at the surface points are known
+			(shown by open dots). The temperatures at the closed dots are unknown. Since this is a
+			steady-state problem, the temperature distribution in any cross-section of the heat sink
+			(into the page) is the same and the temperature at any grid point is approximately equal
+			to the average of the temperatures at the four grid points connected to it. Use this
+			approximation to set up a system of equations for the unknown temperatures. This is
+			called a ``finite difference'' formulation of the problem. The grid points on the insulated
+			surface require special treatment to enforce a no-flux condition. For example,
+			$$ T_2 = \frac{T_1+T_4+T_4+T_f}{4} = \frac{T_1+2T_4+T_f}{4} $$
+			(Effectively, we mirror $T_4$ on the bottom side of $T_2$. Come talk to us if you want to know
+			why this is the correct method.) Make use of symmetry in a similar way when you
+			think of the four grid points surrounding points on the left and right internal edges of
+			the domain you are analyzing. Use Matlab to solve your system of equations for the
+			unknown point temperatures.
+			
+			\item Use Matlab's \texttt{contourf} command to produce a graph of the steady-state temperature
+			distribution. Include a printout of your graph with your homework. Use your graph to
+			check if your temperature distribution seems reasonable.
+		\end{enumerate}
+	\end{problem}
+	
+	
+	\begin{problem}[2 (cont.)]
+		\begin{enumerate}
+			\item[(c)] Fourier's law of heat conduction says that the flux of heat energy across a surface
+			is proportional to the outward normal temperature gradient, and the constant of
+			proportionality is the thermal conductivity, k, which for copper is 400 W/(m · K). In this
+			situation, the heat transferred from the chip to the heat sink per unit length (in W per
+			meter into the page) at the top surface (whose normal is aligned with the y direction) of
+			the shaded domain we are analyzing is
+			\begin{displaymath}
+			\begin{split}
+			Q_{\text{top}} &= k \int_{\text{left end of shaded domain}}^{\text{right end of shaded domain}} \frac{\partial T}{\partial y}dx \\
+			&\approx k \cdot \frac{\Delta}{2} \left[ \frac{T_7-T_c}{\Delta} + 2\frac{T_8-T_c}{\Delta} + 2\frac{T_9-T_c}{\Delta} + \frac{T_{10}-T_c}{\Delta}\right] \\
+			&= \frac{k}{2} \left[(T_7-T_c) + 2(T_8-T_c) + 2(T_9-T_c) + (T_{10}-T_c) \right]
+			\end{split}
+			\end{displaymath}
+			In the equation above, $\Delta$ is the horizontal or vertical distance between any two adjacent
+			grid points, the integral over the top edge of the domain is approximated using the
+			trapezoidal rule, and the temperature gradient $\partial T/\partial y$ is approximated by the temperature
+			difference between adjacent grid points, divided by $\Delta$. What is the rate of heat transfer
+			(in W) from a 10 mm x 10 the chip to the heat sink? [Note that this calculation is an
+			overestimate of the heat that can be removed for several reasons. The coarse grid limits
+			the precision of the temperature distribution (so several steps of refining the grid until
+			the further refinement does not significantly change the answer is warranted), we have idealized the heat transfer between the chip and the copper and between the copper and
+			the fluid, and we assumed the fluid temperature stays constant as it flows into the page,
+			but it would heat up. Extending the model to remove these approximations would be
+			within your abilities if you needed a more reliable answer].
+		\end{enumerate}
+	\end{problem}
+	
+	\begin{solution}
+		\vfill
+	\end{solution}
+
+	\newpage
+	
+	\begin{problem}[3]
+		In this problem, we will reconsider the truss problem that we studied in class.
+		\begin{enumerate}
+			\item Recalculate the optimal location of joint $B$ that minimizes the sum of the bar lengths of
+			the truss, this time using the \texttt{fminsearch} function in Matlab. What is that minimum
+			total bar length? (By minimizing the total bar length, we are minimizing the weight and
+			cost of the truss.) For this part of the problem, you will need to modify your \texttt{e72truss.m}
+			code so that it outputs the total length of the truss, given a 2 $\times$ 1 vector representing the
+			coordinates of the joint $B$ as input.
+			
+			\item Suppose there is an obstacle that requires $x \geq 3$, where $x$ is the $x$-coordinate of joint $B$.
+			Calculate the optimal location of joint $B$ that minimizes the total bar lengths of the
+			truss in this situation. What is that optimal length? You might be interested in Matlab’s
+			\texttt{fmincon} function.
+			
+			\item Calculate the optimal location of joint $B$ that maximizes $\phi$, the max load per weight of
+			the truss. What is the resulting optimal value of $\phi$ and the maximum load of the truss?
+			
+			\item Calculate the optimal location of joint $B$ that maximizes $\phi$, subject to the constraint
+			$x \geq 3$. What is the resulting optimal value of $\phi$ and the maximum load of the truss?
+		\end{enumerate}
+		\textbf{Note}: If you want to know more about what’s happening with Matlab’s \texttt{fmincon}, you might
+		look into using the \texttt{optimset} function to set values for the options \texttt{TolX} and \texttt{TolFun}. You’ll find
+		more information in the Matlab documentation for \texttt{fmincon} function.
+
+	\end{problem}
+	
+\end{document}

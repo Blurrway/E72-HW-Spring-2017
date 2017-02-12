@@ -1,0 +1,191 @@
+\documentclass[12pt,letterpaper]{hmcpset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{afterpage}
+%\usepackage{indentfirst}
+
+% info for header block in upper right hand corner
+\name{}
+\class{Engineering 72}
+\assignment{Homework 4}
+\duedate{Due 17 February 2017}
+
+\newcommand{\pn}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\bk}[1]{\left[ #1 \right]}
+\newcommand{\vc}[1]{\left\langle #1 \right\rangle}
+\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}
+
+\newcommand{\norm}[1]{\lvert #1 \rvert}
+
+% set numbering style for enumerated lists to be of form (a), (b), (c), etc.
+\renewcommand{\labelenumi}{{(\alph{enumi})}}
+
+% command to make 2in wide image centered on page
+\newcommand{\diagram}[2]{\begin{center}\includegraphics[width=#2in, keepaspectratio]{#1}\end{center}}
+
+
+\begin{document}
+	
+	\problemlist{1,2,3}
+	
+	\begin{problem}[1]
+		\setlength{\parskip}{3pt}
+		A simple model of the vibration modes of a wing on a flying airplane is given below. It
+		accounts for bending and twisting motion by modeling the wing as a mass attached to the
+		aircraft body by a linear spring with constant $k_1$ and a torsional spring with constant $k_2$.
+		Linear damping with constant $c_1$ and torsional damping with constant $c_2$ are not indicated in
+		the figure but can also be considered.
+		
+		\diagram{Airplane}{5}
+		
+		The vertical motion $x(t)$ and rotational motion $\theta(t)$ of this system are governed by these
+		linearized differential equations:
+		\begin{displaymath}
+		\begin{split}
+		m\Ddot{x} - me\Ddot{\theta} + c_1 \Dot{x} + k_1 x &= 0\\
+		(J + me^2)\Ddot{\theta} - me\Ddot{x} + c_2 \Dot{\theta} + k_2 \theta &= 0
+		\end{split}
+		\end{displaymath}
+		Here, $m$ is the mass of the wing, $J$ is the moment of inertia of the wing about its center of
+		mass, and $e$ is the horizontal distance between the center of mass and the effective connection
+		point of the spring and damping elements.
+		Use the following parameter values: $m =$ 10000 kg, $J =$ 5000 kg $\cdot$ m$^2$, $e =$ 1 m, $k_1 =$ 106 N/m
+		and $k_2 =$ 105 Nm/rad.
+		\begin{enumerate}
+			\item Develop a set of four first-order differential equations for this system and write them in
+			the matrix form $\Dot{\textbf{Y}} = A\textbf{Y} + \textbf{F}(t)$ where
+			$$ \textbf{Y} = \begin{bmatrix}
+				x\\
+				\Dot{x}\\
+				\theta\\
+				\Dot{\theta}
+				\end{bmatrix}
+			$$
+		\end{enumerate}
+	\end{problem}
+	
+	\newpage
+	
+	\begin{problem}[1 (cont.)]
+		\begin{enumerate}
+		\item[(b)]  Suppose that there is no damping in the system ($c_1 = c_2 = 0$). What kind of motion
+		characterizes the transient response of the system, and what are its vibrational frequencies?
+		
+		\item[(c)] Now suppose that there is no damping in the system ($c_1 = c_2 = 0$). What kind of motion
+		characterizes the transient response of the system, and what are its vibrational frequencies?
+		
+		\item[(d)] Now suppose $c_1 = 10^5$ Ns/m and $c2 = 10^5$ Nm/(rad/s). What kind of motion characterizes
+		the transient response of the system?
+		\end{enumerate}
+	\textbf{Hint:} Having a hard time computing eigenvalues of a 4 × 4 matrix? Use Matlab.
+
+	\end{problem}
+	
+	%\begin{solution}
+	%	\vfill
+	%\end{solution}
+	
+	\afterpage{\null\newpage}
+	
+	
+	\begin{problem}[2]
+		\setlength{\parskip}{3pt}
+		Producing chemicals in a batch process involves filling a vessel with liquid, sealing it, then
+		heating it to a prescribed temperature. In the design of such a process it is important to
+		calculate the time required for the liquid to reach the desired temperature. The vessel shown
+		is a small model designed for quick processing. It has an electrical heating element contained
+		within an inner metal jacket that has thermal resistance $R_{HL}$ (heater-to-liquid resistance).
+		The thermal resistance of the vessel and its outer layer of insulation is $R_{La}$ (liquid-to-ambient
+		resistance). The heater and liquid have thermal capacitances $C_H$ and $C_L$, respectively.
+		
+		All temperatures are to be measured relative to the ambient temperature. Initially both the
+		heater and the liquid are at this ambient temperature with the heater turned off, so the heater
+		(relative) temperature $\theta_H (t)$ and the liquid (relative) temperature $\theta_L (t)$ (which is assumed to
+		be spatially uniform because there is a mixer in the vessel) have initial values of zero.
+		
+		The rate at which energy is supplied to the heating element is $q_i (t)$.
+		
+		\diagram{Heater}{2}
+		
+		At time $t = 0$ the heater is connected to an electrical source that supplies energy at a constant
+		rate. The goal is to determine the response of the liquid temperature $\theta_L$ and to calculate the
+		time required for the liquid to reach a desired temperature.
+		
+		The system of equations that governs this system is
+		\begin{displaymath}
+		\begin{split}
+		\Dot{\theta}_H &= \frac{1}{C_H} \left[ q_i - q_{HL} \right]\\
+		\Dot{\theta}_L &= \frac{1}{C_L} \left[ q_{HL} - q_{La} \right]
+		\end{split} 
+		\end{displaymath}
+		where $q_{HL} = (\theta_H - \theta_L)/R_HL$ and $q_{La} = \theta_L / R_{La}$. Assuming the values 
+		$C_H = 1 \times 10^3$ J/K,
+		$C_L = (40/19) \times 10^4$ J/K,
+		$R_{HL} = 1 \times 10^{−4}$	s $\cdot$ K/J, 
+		$R_{La} = (19/21) × 10^{−4}$ s $\cdot$ K/J, and
+		$q_i = 500$ kW, 
+		find the liquid temperature as a function of time (suggestion: stick with the
+		fractions, we're not being unnecessarily mean). What is the steady state temperature of the
+		liquid (relative to ambient)? What is the time required for the liquid temperature to increase
+		by 40 degrees?
+	\end{problem}
+	
+	
+	\begin{problem}[2 (cont.)]
+		\setlength{\parskip}{3pt}
+		\textbf{Note \#1:} If you would like to understand the nature of each of these quantities further, the
+		analogous electrical circuit might be helpful. See \texttt{hw4-ElectricalThermalAnalogy.pdf} in
+		the Homework folder on Sakai for an outline of the analogy, that circuit, and derivation of the
+		equations.
+		
+		\textbf{Note \#2:} Most of the work on this problem should be done by hand. Be strategic about
+		when you introduce numerical values into your work and when you use decimal numbers like 0.9047619 instead of exact expressions like 19/21. There are ways to avoid lots of fractions
+		when diagonalizing your matrix.
+	\end{problem}
+	
+	\begin{solution}
+		\vfill
+	\end{solution}
+	
+	\afterpage{\null\newpage}
+	\newpage
+	
+	
+	
+	\begin{problem}[3]
+		To reduce the possibility of damage caused by impulsive voltage spikes (due to surges from
+		equipment or lightning), the following electrical filter is installed in the power line for some
+		sensitive equipment.
+		
+		\diagram{Circuit}{3}
+		
+		The values of the filter components are $L_1 = L_2 = 10$ mH, $C = 1$ $\mu$F. The load resistance is 50 $\Omega$.
+		\begin{enumerate}
+			\item Derive a set of three first-order differential equations for this system in terms of the
+			variables $v_R$, $v_C$ and $i_C$ and their derivatives, where $v_C$ is the voltage across the capacitor
+			and $i_C$ is the current through the capacitor. The voltage spike is described by the
+			function $v_s (t)$. Explain the governing principle(s) behind each differential equation.
+			Write the equations in the matrix form $\Dot{\textbf{Y}} = A\textbf{Y} + \textbf{F}(t)$ where
+			$$ \textbf{Y} = \begin{bmatrix}
+			v_R\\
+			v_C\\
+			i_C
+			\end{bmatrix} $$
+			
+			\item Compute $v_R (t)$, the output system voltage, in the case where $v_s (t) = 10^{−3} \delta(t)$. This
+			function models a voltage spike with amplitude 100 V and duration 10 $\mu$s. Plot $v_R (t)$ and determine the maximum system voltage that is reached.
+		\end{enumerate}
+		
+		\textbf{Hint:} You do not need to compute the entire matrix exponential. Think about what
+		parts of the matrix exponential you really need to get the information you want.
+	\end{problem}
+
+	
+	\begin{solution}
+		\vfill
+	\end{solution}
+
+
+\end{document}

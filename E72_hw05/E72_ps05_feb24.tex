@@ -1,0 +1,191 @@
+\documentclass[12pt,letterpaper]{hmcpset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{afterpage}
+%\usepackage{indentfirst}
+
+% info for header block in upper right hand corner
+\name{}
+\class{Engineering 72}
+\assignment{Homework 4}
+\duedate{Due 17 February 2017}
+
+\newcommand{\pn}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\bk}[1]{\left[ #1 \right]}
+\newcommand{\vc}[1]{\left\langle #1 \right\rangle}
+\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}
+
+\newcommand{\norm}[1]{\lvert #1 \rvert}
+
+% set numbering style for enumerated lists to be of form (a), (b), (c), etc.
+\renewcommand{\labelenumi}{{(\alph{enumi})}}
+
+% command to make 2in wide image centered on page
+\newcommand{\diagram}[2]{\begin{center}\includegraphics[width=#2in, keepaspectratio]{#1}\end{center}}
+
+
+\begin{document}
+	
+	\problemlist{1,2,3}
+	
+	\begin{problem}[1]
+		In some periodic vibratory systems, external energy is supplied to the system over part of a
+		period and dissipated within the system in another part of the period. This involves nonlinear
+		damping and is known as a relaxation oscillation or a van der Pol oscillation. Van der Pol
+		was a telecommunications engineer who discovered these stable oscillations while building
+		electronic circuit models of the human heart. The model has since been used to describe
+		many other physical phenomena, which you can search on the internet to see.
+		
+		The van der Pol equation is
+		$$\ddot{x} + \mu (x^2 - 1)\dot{x} + x = 0$$
+		where $\mu$ is a parameter to be varied and $x$ is the pacemaker signal in the cardiac model case.
+		\begin{enumerate}
+			\item Write the equation as a system of first order equations, determine the equilibrium point(s)
+			of the system, linearize about each equilibrium point and characterize the stability of the
+			system for $-3 < \mu < 3$.
+			
+			\item The interesting van der Pol results are for $\mu > 0$. Use Matlab to create separate phase
+			portraits for $\mu = 0, 1$ and 3. Comment on the relation between these plots and the
+			expectations from part (a).
+		\end{enumerate}
+		\textbf{Some hints} if you are using Matlab:
+		\begin{itemize}
+			\item The \texttt{quiver} command shows both the magnitude and the direction at each point
+			in the vector field. Sometimes the scaling is set by large magnitude vectors in
+			a way that makes small ones impossible to see. To have it show direction only,
+			normalize all of the vectors. Instead of using a command like \texttt{quiver(x,y,u,v)},
+			use \texttt{quiver(x,y,u./L,v./L)} where \texttt{L=sq rt(u.\^{}2+v.2)}
+			
+			\item You can add streamlines to the quiver plots to help you visualize the trajectories. For
+			example try \texttt{startx = 0.5}; \texttt{starty = 0}; \texttt{streamline(x,y,u,v,startx,starty)}
+		\end{itemize}
+	\end{problem}
+	
+	
+	\begin{solution}
+		\vfill
+	\end{solution}
+	
+	\newpage
+	
+	\begin{problem}[2]
+		A first step in evaluating the dynamics of wheeled vehicles such as bicycles and motorcycles is
+		understanding the stability of a rolling disk. This disk rolls without slipping on a horizontal
+		plane. Its angular velocity is characterized by $\dot{\alpha}$, the rate of change of the lean angle $\alpha$, $\Omega$ the
+		rate of spin about the vertical \textbf{z} direction, and $\omega$ the rate of spin about its axial direction.
+		The equations governing the orientation are
+		\begin{displaymath}
+		\begin{split}
+		(2k+1)\dot{\omega} + \dot{\alpha}\Omega \sin\alpha &= 0\\
+		k\Omega^2 \sin\alpha \cos\alpha + (2k+1)\omega\Omega \sin\alpha - (k+1)\ddot{\alpha} &= \frac{g}{r} \cos\alpha\\
+		\dot{\Omega} \sin\alpha + 2\dot{\alpha} \Omega\cos\alpha + 2\omega\dot{\alpha} &= 0
+		\end{split}
+		\end{displaymath}
+		
+		where $r$ is the radius of the disk and $g$ is the gravitational constant. For a solid disk as we are
+		considering $k = \frac{1}{4}$.
+		
+		Arbitrary motion may be simulated with these equations, but in this problem we are interested
+		in equilibrium states of the system and their stability. Equilibrium states of this system
+		correspond to steady motion of the disk. You may want to check for yourself that all
+		equilibrium states of the system must have $\alpha = \alpha_0$, $\dot\alpha = 0$, $\omega = \omega_0$, and $\Omega = \Omega_0$, where $\alpha_0$, $\omega_0$, and $\Omega_0 $ are constants that satisfy a nonlinear equation. In particular, we're interested in two
+		particular equilibrium states with $\alpha_0 = \pi/2$, which corresponds to the disc being vertical.
+		
+		\diagram{Disk}{3}
+		
+		\begin{enumerate}
+			\item If $\Omega_0 = 0$ 0 the disk rolls along a straight line and $\omega_0$ is the rolling angular velocity. For
+			what angular velocities $\omega_0$ does local stability analysis predict unstable motion? (You
+			answer will be in terms of $r$ and $g$.)
+			
+			\item If $ \omega_0 = 0 $ the disk spins in place about the vertical axis with angular velocity $\Omega_0$. For
+			what angular velocities $\Omega_0$ does local stability analysis predict unstable motion?
+		\end{enumerate}
+	\end{problem}
+	
+	\newpage
+	
+	\begin{problem}[2 (cont.)]
+	\begin{enumerate}
+		\item[(d)] (Extra credit) You'll notice that we didn't ask you for the values of $\omega_0$ (or $\Omega_0$) above
+		that correspond to stable motion. That’s because your local stability analysis should
+		yield some eigenvalues with zero real parts that will prevent you from concluding that
+		the motion is stable. You can get some extra credit on this problem by performing
+		numerical calculations and producing some graphs, in the style of problem 4(b), that
+		demonstrate the stability and instability of these two classes of equilibria.
+	\end{enumerate}
+	There are plenty of other interesting cases (rolling in a circle, various precessions). If you
+	are interested come discuss some time, or take E175 (Dynamics of Rigid Bodies).
+	\end{problem}
+	
+	\begin{solution}
+		\vfill
+	\end{solution}
+	
+	\newpage
+	
+	\begin{problem}[3]
+		Three weeks after teaching at Harvey Mudd College
+		began in the fall of 1957, the Soviet Union launched
+		the first-ever artificial Earth satellite: the spherically shaped
+		Sputnik I. They launched Sputnik II the
+		following month. There was a lot of pressure for
+		the US to keep up, and in January 1958 the US
+		launched Explorer I. Explorer I was very different
+		looking--long and narrow--and it was supposed to
+		rotate about its own long axis centerline.
+		A radio astronomer named Ronald Bracewell had tracked and analyzed the flight of Sputnik I
+		and understood its stable behavior. He also knew that Explorer I would not be stable and
+		would tumble end over end. He tried to reach engineers at JPL to warn them but security
+		concerns prevented him from getting his information to the right people and he was only
+		able to share it by publishing it in Nature later in 1958. Too late--Explorer I made just one
+		stably-spinning orbit of the Earth then began to tumble.
+		It was not unreasonable for the JPL engineers to plan for spin about the long axis. This would
+		be spinning about the axis with the minimum moment of inertia, which should be stable.
+		
+		However once in flight, its flexible antennas were deployed, and their vibration dissipated
+		energy and the axis changed. We;re not going to analyze the transition, but we can study the
+		effect of rotation about different axes.
+		
+		The equations of motion governing the orientation for a spinning rigid body with at least
+		two axes of symmetry are
+		\begin{displaymath}
+		\begin{split}
+		0 &= I_x \dot{\omega}_x + (I_z - I_y)\omega_z\omega_y\\
+		0 &= I_y \dot{\omega}_y + (I_x - I_z)\omega_x\omega_z\\
+		0 &= I_z \dot{\omega}_z + (I_y - I_x)\omega_y\omega_x\\
+		\end{split}
+		\end{displaymath}
+		where $\omega_x$, $\omega_y$ and $\omega_z$ are the angular velocities of the body about the $x$-, $y$- and $z$-axes,
+		respectively, and $I_x$, $I_y$ and $I_z$ are the corresponding central moments of inertia of the body
+		about each axis.
+		\begin{enumerate}
+			\item Show that constant rotation of the body along each of the axes is an equilibrium state of
+			the differential equations above. In other words, show that $(\omega_x$, $\omega_y$, $\omega_z)=(c$, 0, 0) or (0, $c$, 0) or (0, 0, $c$), where $c$ is a constant, is an equilibrium state. What information does
+			the local stability analysis provide about these equilibrium states? Explain why local
+			stability analysis does not fully explain the stability of the three equilibrium states.
+			
+			\item Use Matlab to investigate the stability of each of three types of equilibrium states.
+			The moment of inertia about the long axis is $I_x = 0.06$ kg $\cdot$ m$^2$, and the other two
+			moments of inertia, while nominally the same, will be shifted by just 1\% to model a
+			redistribution due to antenna flexibility: $I_y = 0.099$ kg $\cdot$ m$^2$ and $I_z = 0.101$ kg $\cdot$ m$^2$. Write
+			a few sentences about how you carried out your investigation and whether your work
+			demonstrates the expected instability. Include figures that best explain your claims.
+		\end{enumerate}
+	\end{problem}
+	
+	\newpage
+	
+	\begin{problem}[3 (cont.)]
+		\textbf{More history}: In addition to not having Matlab or OpenRocket in 1958, here is another
+		detail to give context to the work being done at that time. ``During the 1940s and 1950s,
+		JPL used the word `computer' to refer to a person rather than a machine. The all-female
+		computer team, many of the members recruited right out of high school, were responsible
+		for doing all the math by hand required to plot satellite trajectories and more.'' (from
+		\texttt{http://www.nasa.gov/mission\_pages/explorer/computers.html})
+	\end{problem}
+	
+	
+\end{document}

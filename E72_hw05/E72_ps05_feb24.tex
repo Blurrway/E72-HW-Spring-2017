@@ -8,8 +8,8 @@
 % info for header block in upper right hand corner
 \name{}
 \class{Engineering 72}
-\assignment{Homework 4}
-\duedate{Due 17 February 2017}
+\assignment{Homework 5}
+\duedate{Due 24 February 2017}
 
 \newcommand{\pn}[1]{\left( #1 \right)}
 \newcommand{\abs}[1]{\left| #1 \right|}
@@ -56,7 +56,7 @@
 			in the vector field. Sometimes the scaling is set by large magnitude vectors in
 			a way that makes small ones impossible to see. To have it show direction only,
 			normalize all of the vectors. Instead of using a command like \texttt{quiver(x,y,u,v)},
-			use \texttt{quiver(x,y,u./L,v./L)} where \texttt{L=sq rt(u.\^{}2+v.2)}
+			use \texttt{quiver(x,y,u./L,v./L)} where \texttt{L=sqrt(u.\^{}2+v.2)}
 			
 			\item You can add streamlines to the quiver plots to help you visualize the trajectories. For
 			example try \texttt{startx = 0.5}; \texttt{starty = 0}; \texttt{streamline(x,y,u,v,startx,starty)}
@@ -77,11 +77,11 @@
 		rate of spin about the vertical \textbf{z} direction, and $\omega$ the rate of spin about its axial direction.
 		The equations governing the orientation are
 		\begin{displaymath}
-		\begin{split}
-		(2k+1)\dot{\omega} + \dot{\alpha}\Omega \sin\alpha &= 0\\
-		k\Omega^2 \sin\alpha \cos\alpha + (2k+1)\omega\Omega \sin\alpha - (k+1)\ddot{\alpha} &= \frac{g}{r} \cos\alpha\\
-		\dot{\Omega} \sin\alpha + 2\dot{\alpha} \Omega\cos\alpha + 2\omega\dot{\alpha} &= 0
-		\end{split}
+			\begin{split}
+				(2k+1)\dot{\omega} + \dot{\alpha}\Omega \sin\alpha &= 0\\
+				k\Omega^2 \sin\alpha \cos\alpha + (2k+1)\omega\Omega \sin\alpha - (k+1)\ddot{\alpha} &= \frac{g}{r} \cos\alpha\\
+				\dot{\Omega} \sin\alpha + 2\dot{\alpha} \Omega\cos\alpha + 2\omega\dot{\alpha} &= 0
+			\end{split}
 		\end{displaymath}
 		
 		where $r$ is the radius of the disk and $g$ is the gravitational constant. For a solid disk as we are
@@ -96,28 +96,15 @@
 		\diagram{Disk}{3}
 		
 		\begin{enumerate}
-			\item If $\Omega_0 = 0$ 0 the disk rolls along a straight line and $\omega_0$ is the rolling angular velocity. For
+			\item If $\Omega_0 = 0$ the disk rolls along a straight line and $\omega_0$ is the rolling angular velocity. For
 			what angular velocities $\omega_0$ does local stability analysis predict unstable motion? (You
 			answer will be in terms of $r$ and $g$.)
 			
 			\item If $ \omega_0 = 0 $ the disk spins in place about the vertical axis with angular velocity $\Omega_0$. For
 			what angular velocities $\Omega_0$ does local stability analysis predict unstable motion?
 		\end{enumerate}
-	\end{problem}
-	
-	\newpage
-	
-	\begin{problem}[2 (cont.)]
-	\begin{enumerate}
-		\item[(d)] (Extra credit) You'll notice that we didn't ask you for the values of $\omega_0$ (or $\Omega_0$) above
-		that correspond to stable motion. That’s because your local stability analysis should
-		yield some eigenvalues with zero real parts that will prevent you from concluding that
-		the motion is stable. You can get some extra credit on this problem by performing
-		numerical calculations and producing some graphs, in the style of problem 4(b), that
-		demonstrate the stability and instability of these two classes of equilibria.
-	\end{enumerate}
-	There are plenty of other interesting cases (rolling in a circle, various precessions). If you
-	are interested come discuss some time, or take E175 (Dynamics of Rigid Bodies).
+		There are plenty of other interesting cases (rolling in a circle, various precessions). If you
+		are interested come discuss some time, or take E175 (Dynamics of Rigid Bodies).
 	\end{problem}
 	
 	\begin{solution}
@@ -134,7 +121,7 @@
 		following month. There was a lot of pressure for
 		the US to keep up, and in January 1958 the US
 		launched Explorer I. Explorer I was very different
-		looking--long and narrow--and it was supposed to
+		looking---long and narrow---and it was supposed to
 		rotate about its own long axis centerline.
 		A radio astronomer named Ronald Bracewell had tracked and analyzed the flight of Sputnik I
 		and understood its stable behavior. He also knew that Explorer I would not be stable and
@@ -146,17 +133,17 @@
 		be spinning about the axis with the minimum moment of inertia, which should be stable.
 		
 		However once in flight, its flexible antennas were deployed, and their vibration dissipated
-		energy and the axis changed. We;re not going to analyze the transition, but we can study the
+		energy and the axis changed. We're not going to analyze the transition, but we can study the
 		effect of rotation about different axes.
 		
 		The equations of motion governing the orientation for a spinning rigid body with at least
 		two axes of symmetry are
 		\begin{displaymath}
-		\begin{split}
-		0 &= I_x \dot{\omega}_x + (I_z - I_y)\omega_z\omega_y\\
-		0 &= I_y \dot{\omega}_y + (I_x - I_z)\omega_x\omega_z\\
-		0 &= I_z \dot{\omega}_z + (I_y - I_x)\omega_y\omega_x\\
-		\end{split}
+			\begin{split}
+				0 &= I_x \dot{\omega}_x + (I_z - I_y)\omega_z\omega_y\\
+				0 &= I_y \dot{\omega}_y + (I_x - I_z)\omega_x\omega_z\\
+				0 &= I_z \dot{\omega}_z + (I_y - I_x)\omega_y\omega_x\\
+			\end{split}
 		\end{displaymath}
 		where $\omega_x$, $\omega_y$ and $\omega_z$ are the angular velocities of the body about the $x$-, $y$- and $z$-axes,
 		respectively, and $I_x$, $I_y$ and $I_z$ are the corresponding central moments of inertia of the body
